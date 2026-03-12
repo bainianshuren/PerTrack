@@ -1,0 +1,41 @@
+PerTrack/
+├── configs/                # 配置文件目录
+│   ├── mot17.yaml          # MOT17数据集训练/测试配置
+│   ├── mot20.yaml          # MOT20数据集训练/测试配置
+│   └── default.yaml        # 基础默认配置
+├── datasets/               # 数据集相关（数据加载、预处理）
+│   ├── __init__.py
+│   ├── mot_dataset.py      # MOT数据集加载类
+│   └── data_augment.py     # 数据增强方法
+├── models/                 # 算法核心模型
+│   ├── __init__.py
+│   ├── backbones/          # 骨干网络（轻量级，替换YOLOX-FPN）
+│   │   ├── __init__.py
+│   │   └── lightweight_yolox.py
+│   ├── dwa_conv.py         # 动态加权空洞卷积模块(DWA-Conv)
+│   ├── akf.py              # 自适应卡尔曼滤波模块(AKF)
+│   ├── sda.py              # 场景感知动态关联模块(SDA)
+│   ├── envnet.py           # 场景感知子网络EnvNet（SDA子模块）
+│   ├── reid.py             # 轻量级ReID网络（外观特征提取）
+│   └── pertrack.py         # PerTrack整体模型封装
+├── tracker/                # 跟踪器核心逻辑
+│   ├── __init__.py
+│   └── pertrack_tracker.py # 跟踪器主类（含匹配、轨迹管理）
+├── utils/                  # 工具函数
+│   ├── __init__.py
+│   ├── metrics.py          # MOT评价指标计算（MOTA/IDF1/IDS等）
+│   ├── box_ops.py          # 框操作（IoU计算、坐标转换等）
+│   ├── log_utils.py        # 日志记录
+│   ├── model_utils.py      # 模型加载、保存、参数统计
+│   └── visualization.py    # 跟踪结果可视化
+├── train.py                # 模型训练脚本
+├── test.py                 # 模型测试/推理脚本
+├── demo.py                 # 单视频/图片演示脚本
+├── pretrained/             # 预训练权重目录（含CrowdHuman预训练）
+│   └── README.md
+├── results/                # 测试结果保存目录（指标、可视化结果）
+│   └── README.md
+├── requirements.txt        # 环境依赖
+├── README.md               # 项目主说明文档
+├── LICENSE                 # 开源协议
+└── ablation_study.py       # 消融实验脚本

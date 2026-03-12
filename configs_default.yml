@@ -1,0 +1,39 @@
+# 基础配置文件 - PerTrack算法核心参数
+# 所有数据集配置继承此文件
+
+# 模型核心配置
+model:
+  backbone: "lightweight_yolox"    # 轻量级骨干网络
+  num_classes: 1                   # 仅行人检测
+  reid_feat_dim: 128               # ReID特征维度
+  dwa_conv_rates: [1,2,3]          # DWA-Conv膨胀率
+  akf_q_base: 0.01                 # AKF基础过程噪声
+  akf_r0: 0.1                      # AKF初始观测噪声
+  epsilon: 1e-6                   
+
+# 训练配置
+train:
+  batch_size: 6
+  epochs: 50
+  lr_init: 0.0001
+  lr_30epoch: 0.00001
+  momentum: 0.9
+  weight_decay: 0.0005
+  warmup_epochs: 1
+  cosine_annealing: True           # 余弦退火学习率
+  data_aug: True                   # 数据增强
+  aug_last_epoch: 40               # 最后10轮关闭增强
+
+# 跟踪配置
+track:
+  iou_threshold: 0.3               # IoU匹配阈值
+  mahalanobis_thresh: 2.0          # 马氏距离阈值
+  cosine_thresh: 0.5               # 余弦相似度阈值
+  track_age: 30                    # 轨迹生命周期
+  conf_thresh: 0.1                 # 低置信框阈值（ByteTrack）
+  high_conf_thresh: 0.5            # 高置信框阈值
+
+# 设备配置
+device: "cuda"                     # cpu/cuda
+seed: 42                           # 随机种子
+num_workers: 8                     # 数据加载线程数

@@ -1,0 +1,22 @@
+# MOT17数据集配置 - 继承default.yaml
+_base_: ./default.yaml
+
+# 数据集路径
+data:
+  data_path: "./data/MOT17"
+  train_set: "train"
+  test_set: "test"
+  seq_list: ["MOT17-02-FRCNN", "MOT17-04-FRCNN", "MOT17-05-FRCNN", 
+             "MOT17-09-FRCNN", "MOT17-10-FRCNN", "MOT17-11-FRCNN", "MOT17-13-FRCNN"]
+
+# 训练微调
+train:
+  batch_size: 6
+  epochs: 50
+  lr_init: 0.0001
+
+# 测试配置
+test:
+  save_results: True
+  visualize: True
+  save_vis_path: "./results/mot17/vis"

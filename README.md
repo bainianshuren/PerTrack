@@ -1,5 +1,3 @@
-# PerTrack
-PerTrack A Lightweight Pedestrian Small-Target Tracking Algorithm Based on Dynamic Perception
 \# PerTrack: A High-Precision Pedestrian Tracking Algorithm Based on Multi-Feature Fusion and Trajectory Optimization
 
 

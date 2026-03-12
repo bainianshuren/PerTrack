@@ -1,0 +1,21 @@
+# MOT20数据集配置 - 继承default.yaml
+_base_: ./default.yaml
+
+# 数据集路径
+data:
+  data_path: "./data/MOT20"
+  train_set: "train"
+  test_set: "test"
+  seq_list: ["MOT20-01", "MOT20-02", "MOT20-03", "MOT20-05"]
+
+# 训练微调
+train:
+  batch_size: 4
+  epochs: 60
+  lr_init: 0.00008
+
+# 测试配置
+test:
+  save_results: True
+  visualize: True
+  save_vis_path: "./results/mot20/vis"
